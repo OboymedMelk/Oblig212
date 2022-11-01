@@ -4,7 +4,7 @@ from django.db import models
 class Car(models.Model):
     make = models.CharField(max_length=50)
     carmodel = models.CharField(max_length=50)
-    year = models.IntergerField(max_length=4)
+    year = models.IntegerField(max_length=4)
     location = models.CharField(max_length=50)
     status = models.CharField(max_length=50)
 
@@ -14,7 +14,7 @@ class Car(models.Model):
 
 class Customer(models.Model):
     name = models.CharField(max_length=50)
-    age = models.IntergerField()
+    age = models.IntegerField()
     address = models.CharField(max_length=50)
 
     def __str__(self):
@@ -24,7 +24,7 @@ class Customer(models.Model):
 class Employee(models.Model):
     name = models.CharField(max_length=50)
     address = models.CharField(max_length=50)
-    branch = models.IntergerField()
+    branch = models.IntegerField()
 
     def __str__(self):
         return self.make + ' ' + self.carmodel
