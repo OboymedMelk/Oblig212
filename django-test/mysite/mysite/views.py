@@ -1,6 +1,8 @@
 from .models import Car
 from rest_framework.response import Response
 from .serializers import CarSerializer
+from .serializers import Customer
+from .serializers import Employee
 from rest_framework import status
 from django.http import JsonResponse
 from rest_framework.decorators import api_view
@@ -40,3 +42,16 @@ def delete_car(request, id):
         return Response(status=status.HTTP_404_NOT_FOUND)    
     theCar.delete()
     return Response(status=status.HTTP_204_NO_CONTENT)
+
+@api_view(['ORDER'])
+def order_car(request, customerid, carid):
+    try:
+        theCar = Car.objects.get(pk = carid)
+        theCustomer = Customer.objects.get(pk = customerid)
+        if theCar.status == 'Available':
+            theCar.status = 'Booked'
+            theCar.save()
+    except theCar.DoesNotExist:
+        return Response(status = status.HTTP_404_NOT_FOUND)
+    return Response(status=status.HTTP_204_NO_CONTENT)
+
