@@ -20,6 +20,9 @@ from .views import save_car
 from .views import update_car
 from .views import delete_car
 from .views import order_car
+from .views import cancel_car_order
+from .views import rent_car
+from .views import return_car
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -28,4 +31,7 @@ urlpatterns = [
     path("update_car/<int:id>", update_car),
     path("delete_car/<int:id>", delete_car),
     path("order_car/<int:customerid>/<int:carid>", order_car),
+    path("cancel_car_order/<int:customerid>/<int:carid>", cancel_car_order),
+    path("rent_car/<int:customerid>/<int:carid>", rent_car),
+    path("return_car/<int:customerid>/<int:carid>", return_car),
 ]
